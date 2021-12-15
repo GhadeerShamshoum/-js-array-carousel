@@ -26,6 +26,9 @@ body{
 .row{
     height: 100%;
 }
+.ms_itemsContainer{
+    height: 100%;
+}
 
 .ms_container-photos{
     height: 100%;
@@ -95,7 +98,7 @@ padding:3px 6px;
     object-fit: cover;
 }
 
-.ms_imgContainer .cover{
+.ms_imgContainer .ms_cover{
     height: 100%;
     width: 100%;
     background-color: rgb(20 20 20 / 51%);
@@ -103,6 +106,23 @@ padding:3px 6px;
     top:0;
     left: 0;
  
+}
+.ms_imgContainer .ms_remove{
+    display: none;
+}
+
+.item.active{
+    display: block;
+}
+
+.hidden{
+    display: none;
+}
+
+.item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 

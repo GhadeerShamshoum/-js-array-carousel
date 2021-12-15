@@ -13,7 +13,7 @@ const title = [
     'Gran Bretagna',
     'Germania',
     'Paradise'
-]
+];
 
 const text = [
     'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.',
@@ -21,8 +21,48 @@ const text = [
     'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
     'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
     'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
-]
+];
+
+let itemsContent = '';
+let elementActive = 0;
 
 for(let i=0; i<items.length; i++){
+    itemsContent += `
+      <div class="ms_mainPhoto col-10" id="item-${i}">
+          <img src="${items[i]}">
+      </div>
+      <div class="ms_textContainer align-self-end m-5 text-end">
+          <h1 class="title text-white d-flex justify-content-end me-3">${title[i]}</h1>
+          <p class="text text-white d-flex justify-conet> ${text[i]}</p>
+      </div>`;
 
 }
+
+let itemsContainer  = document.querySelector('.ms_itemsContainer');
+itemsContainer.innerHTML = itemsContent;
+
+let itemActive = document.getElementById('item-'+elementActive);
+itemActive.classList.add('active');
+
+const prev = document.querySelector('.prev');
+const next = document.querySelector('.next');
+
+prev.addEventListener('click', function(){
+    elementActive--;
+    itemActive.classList.remove('active');
+    itemActive= document.getElementById('item-'+elementActive);
+    itemActive.classList.add('active');
+    if(elementActive==0){
+        prev.classList.add('hidden')
+    }
+});
+next.addEventListener('click', function(){
+    elementActive++;
+    itemActive.classList.remove('active');
+    itemActive= document.getElementById('item-'+elementActive);
+    itemActive.classList.add('active');
+    if(elementActive==items.length-1){
+        next.classList.add('hidden')
+    }
+});
+
